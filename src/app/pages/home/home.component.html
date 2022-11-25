@@ -1,12 +1,53 @@
 <div class="container">
-  <!-- burrons section -->
-  <div class="mt-3 buttons-section">
-    <button class="btn btnGroup">
+  <!-- buttons section -->
+  <div class="buttons-section">
+    <button class="btn btnGroup" (click)="addGroup()">
       <i class="bi bi-collection"></i> Agregar Grupo
     </button>
-    <button class="btn btnNote">
+    <button class="btn btnNote" (click)="addNotes()">
       <i class="bi bi-file-earmark-plus"></i> Agregar Nota
     </button>
+  </div>
+
+  <!-- creation section -->
+  <div class="card cardNote mb-3" style="max-width: 18rem" *ngIf="note">
+    <div class="card-header">Crea una nota</div>
+    <div class="card-body">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label"
+          >Título</label
+        >
+        <input
+          type="text"
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label"
+          >Contenido</label
+        >
+        <textarea
+          class="form-control"
+          id="exampleFormControlTextarea1"
+          rows="3"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="card cardGroup mb-3" style="max-width: 18rem" *ngIf="groupp">
+    <div class="card-header">Crea un grupo</div>
+    <div class="card-body">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label"
+          >Título</label
+        >
+        <input
+          type="text"
+          class="form-control"
+        />
+      </div>
+    </div>
   </div>
 
   <!-- welcom message -->

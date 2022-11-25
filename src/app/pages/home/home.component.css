@@ -1,12 +1,24 @@
-.btnGroup{
-	background-color:#F26835;
-	color:white;
+.btnGroup {
+  background-color: #f26835;
+  color: white;
+  margin: 1rem;
 }
-.btnNote{
-	background-color:#A9DA48;
-	color:white;
+.btnNote {
+  background-color: #a9da48;
+  color: white;
+  margin: 1rem;
 }
-.buttons-section{
-	display:flex;
-	justify-content:space-around;
+.buttons-section {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cardNote{
+  background-color: #a9da48;
+  color: white;
+}
+
+.cardGroup{
+  background-color: #f26835;
+  color: white;
 }
