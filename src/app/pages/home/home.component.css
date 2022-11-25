@@ -1,0 +1,12 @@
+.btnGroup{
+	background-color:#F26835;
+	color:white;
+}
+.btnNote{
+	background-color:#A9DA48;
+	color:white;
+}
+.buttons-section{
+	display:flex;
+	justify-content:space-around;
+}
