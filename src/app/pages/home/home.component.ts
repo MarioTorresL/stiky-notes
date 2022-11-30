@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Group} from 'src/app/interfaces/group.interface';
 
 @Component({
   selector: 'app-home',
@@ -6,25 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  public note: boolean = false;
-  public groupp: boolean = false;
+
+  public group:Group[] = []
 
   constructor() {}
 
   ngOnInit(): void {
-    this.note = false;
-    this.groupp = false;
   }
 
-  addGroup() {
-    this.note = false
-    this.groupp = true;
-    console.log('agregar grupo');
+  addGroup(name:string = '', color:string = '') {
+    console.log({ name, color });
   }
 
-  addNotes() {
-    this.note = true;
-    this.groupp = false;
-    console.log('agregar nota');
+  addNotes(name:string, content:string, color:string) {
+    console.log({name, content, color});
   }
 }

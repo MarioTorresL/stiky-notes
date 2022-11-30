@@ -1,54 +1,118 @@
 <div class="container">
   <!-- buttons section -->
   <div class="buttons-section">
-    <button class="btn btnGroup" (click)="addGroup()">
+    <button
+      class="btn btnGroup"
+      data-bs-toggle="modal"
+      data-bs-target="#addGroup"
+    >
       <i class="bi bi-collection"></i> Agregar Grupo
     </button>
-    <button class="btn btnNote" (click)="addNotes()">
+    <button
+      class="btn btnNote"
+      data-bs-target="#AddNotes"
+      data-bs-toggle="modal"
+    >
       <i class="bi bi-file-earmark-plus"></i> Agregar Nota
     </button>
   </div>
 
-  <!-- creation section -->
-  <div class="card cardNote mb-3" style="max-width: 18rem" *ngIf="note">
-    <div class="card-header">Crea una nota</div>
-    <div class="card-body">
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label"
-          >Título</label
-        >
-        <input
-          type="text"
-          class="form-control"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label"
-          >Contenido</label
-        >
-        <textarea
-          class="form-control"
-          id="exampleFormControlTextarea1"
-          rows="3"
-        ></textarea>
+  <!-- Modals -->
+  <div class="modal fade" id="addGroup">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Agrega un Grupo</h1>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Nombre</label
+            >
+            <input type="text" class="form-control" #nameGroup />
+          <div class="d-flex justify-content-end align-items-center mt-3">
+            <label class="form-label me-3">Color</label>
+            <input
+              type="color"
+              class="form-control form-control-color"
+              title="Choose your color"
+              #colorGroup
+            />
+          </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+          <button
+            type="button"
+            class="btn btnGroup"
+            (click)="addGroup(nameGroup.value, colorGroup.value)"
+            data-bs-dismiss="modal"
+          >
+            Save changes
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="card cardGroup mb-3" style="max-width: 18rem" *ngIf="groupp">
-    <div class="card-header">Crea un grupo</div>
-    <div class="card-body">
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label"
-          >Título</label
-        >
-        <input
-          type="text"
-          class="form-control"
-        />
+  <div class="modal fade" id="AddNotes">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Agrega una Nota</h1>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Nombre Nota</label
+            >
+            <input type="text" class="form-control" #nameNote />
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >Contenido</label
+            >
+            <textarea class="form-control" rows="3" #contentNote></textarea>
+          </div>
+          <div class="d-flex justify-content-end align-items-center">
+            <label class="form-label me-3">Color</label>
+            <input
+              type="color"
+              class="form-control form-control-color"
+              title="Choose your color"
+              #colorNote
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btnNote"
+            (click)="(addNotes(nameNote.value, contentNote.value, colorNote.value))"
+            data-bs-dismiss="modal"
+          >
+            Save changes
+          </button>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- end modals -->
 
   <!-- welcom message -->
   <div class="px-4 py-5 my-5 text-center">
