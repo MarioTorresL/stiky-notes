@@ -1,5 +1,6 @@
 export interface Notes {
   title:string,
   description:string,
-  date: Date
+  date: number,
+  color: string
 }

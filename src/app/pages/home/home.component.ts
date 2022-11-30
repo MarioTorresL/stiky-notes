@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Group} from 'src/app/interfaces/group.interface';
+import { Group } from 'src/app/interfaces/group.interface';
+import { Notes } from 'src/app/interfaces/notes.interface';
 
 @Component({
   selector: 'app-home',
@@ -7,19 +8,21 @@ import {Group} from 'src/app/interfaces/group.interface';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
-  public group:Group[] = []
+  public group: Array<Group> = [];
+  public notes: Array<Notes> = [];
 
   constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  addGroup(title: string = '', color: string = '') {
+    const newGroup: Group = { title, color };
+    console.log({ newGroup });
+    this.group.push(newGroup);
   }
 
-  addGroup(name:string = '', color:string = '') {
-    console.log({ name, color });
-  }
-
-  addNotes(name:string, content:string, color:string) {
-    console.log({name, content, color});
+  addNotes(title: string, description: string, color: string) {
+    const newNotes: Notes = { title, description, color, date: Date.now()};
+    this.notes.push(newNotes);
   }
 }
