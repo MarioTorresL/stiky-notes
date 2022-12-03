@@ -17,12 +17,11 @@ export class HomeComponent implements OnInit {
 
   addGroup(title: string = '', color: string = '') {
     const newGroup: Group = { title, color };
-    console.log({ newGroup });
     this.group.push(newGroup);
   }
 
   addNotes(title: string, description: string, color: string) {
-    const newNotes: Notes = { title, description, color, date: Date.now()};
+    const newNotes: Notes = { title, description, color, date: Date.now() };
     this.notes.push(newNotes);
   }
 }
