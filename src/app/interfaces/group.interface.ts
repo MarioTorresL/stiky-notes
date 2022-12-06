@@ -1,7 +1,7 @@
-import { Notes } from '../interfaces/notes.interface'
+import {Notes} from "./notes.interface";
 
 export interface Group {
   title:string,
-  notes?:Notes[],
-  color?: string
+  color?: string,
+  notes: Notes[]
 }
