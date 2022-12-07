@@ -1,8 +1,6 @@
-import { group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Group } from 'src/app/interfaces/group.interface';
-import { Notes } from 'src/app/interfaces/notes.interface';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -21,14 +19,14 @@ export class HomeComponent implements OnInit {
     this.groupForm = this.fb.group({
       title: ['', Validators.required],
       notes: [''],
-      color: ['#F5EF85'],
+      color: ['#F26835'],
     });
 
     this.notesForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       group: [''],
-      color: ['#F5EF85'],
+      color: ['#F26835'],
     });
   }
 
@@ -46,7 +44,6 @@ export class HomeComponent implements OnInit {
       });
     } else {
       this.groups.push(this.groupForm.value);
-      this.groupForm.reset()
     }
   }
 
@@ -63,10 +60,8 @@ export class HomeComponent implements OnInit {
         confirmButtonColor: '#F26835',
         confirmButtonText: 'Okay',
       });
-      this.notesForm.reset()
     } else {
       (group[0].notes = [...group[0].notes, note]);
-      this.notesForm.reset()
     }
   }
 }

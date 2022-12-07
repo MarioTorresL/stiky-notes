@@ -1,6 +1,6 @@
 <div class="container">
   <!--************** buttons section **************-->
-  <div class="buttons-section">
+  <div class="d-flex justify-content-between">
     <button
       class="btn btnGroup"
       data-bs-toggle="modal"
@@ -58,7 +58,7 @@
         <div class="modal-body">
           <form class="mb-3" (submit)="addNotes()" [formGroup]="notesForm">
             <select class="form-select mb-3" formControlName="group">
-              <option value="0" selected>Selecciona un grupo</option>
+              <option selected="selected" value="0">Selecciona un grupo</option>
               <option *ngFor="let grp of groups" value="{{ grp.title }}">
                 {{ grp.title }}
               </option>
@@ -118,10 +118,10 @@
   </div>
 
   <div *ngIf="groups">
-    <div class="row m-3" *ngFor="let grp of groups">
+    <div class="row mt-2 mb-1" *ngFor="let grp of groups">
       <div class="card" [ngStyle]="{ 'background-color': grp.color }">
         <div class="card-title text-start">
-          <h5>{{ grp.title }}</h5>
+          <h3 class="title">{{ grp.title }}</h3>
         </div>
         <div class="card-body d-flex justify-content-around">
           <div *ngFor="let note of grp.notes">
@@ -129,7 +129,10 @@
               class="card p-1 m-1"
               [ngStyle]="{ 'background-color': note.color }"
             >
-              <div class="card-title font-weight-bold">{{ note.title }}</div>
+              <div class="card-title font-weight-bold text-center">
+                {{ note.title }}
+              </div>
+              <hr />
               <p class="card-body">{{ note.description }}</p>
             </div>
           </div>
