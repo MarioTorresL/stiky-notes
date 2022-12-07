@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Group } from 'src/app/interfaces/group.interface';
 import { Notes } from 'src/app/interfaces/notes.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -32,14 +33,40 @@ export class HomeComponent implements OnInit {
   }
 
   addGroup() {
-    this.groups.push(this.groupForm.value);
+    const newGroup = this.groupForm.value;
+    const group = this.groups.filter((data) => data.title === newGroup.title);
+
+    if (group.length !== 0) {
+      Swal.fire({
+        title: 'Warning',
+        text: 'El grupo ya existe!',
+        icon: 'warning',
+        confirmButtonColor: '#F26835',
+        confirmButtonText: 'Okay',
+      });
+    } else {
+      this.groups.push(this.groupForm.value);
+      this.groupForm.reset()
+    }
   }
 
   addNotes() {
     const note = this.notesForm.value;
 
-    const group = this.groups.filter(data=> data.title === note.group)
+    const group = this.groups.filter((data) => data.title === note.group);
 
-    group[0].notes = [...group[0].notes, note];
+    if (group.length === 0) {
+      Swal.fire({
+        title: 'Warning',
+        text: 'No se a seleccionado un grupo!',
+        icon: 'warning',
+        confirmButtonColor: '#F26835',
+        confirmButtonText: 'Okay',
+      });
+      this.notesForm.reset()
+    } else {
+      (group[0].notes = [...group[0].notes, note]);
+      this.notesForm.reset()
+    }
   }
 }
